@@ -265,6 +265,14 @@ static int32_t pcsc_activate_card(struct s_reader *pcsc_reader, uint8_t *atr, ui
 		rdr_log(pcsc_reader, "ATR: %s", cs_hexdump(1, (uint8_t *)pbAtr, dwAtrLen, tmp, sizeof(tmp)));
 		memcpy(pcsc_reader->card_atr, pbAtr, dwAtrLen);
 		pcsc_reader->card_atr_length = dwAtrLen;
+#ifdef WITH_CARDLIST
+		memcpy(current.atr, cs_hexdump(1, (uint8_t *)pbAtr, dwAtrLen, tmp, sizeof(tmp)), dwAtrLen * 3 - 1);
+		findatr(pcsc_reader);
+		if(cs_strlen(current.info))
+		{
+			rdr_log(pcsc_reader, "%s %s", cs_strlen(current.providername) ? current.providername : "card system", current.info);
+		}
+#endif
 		return OK;
 	}
 	else
