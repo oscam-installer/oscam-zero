@@ -25,6 +25,7 @@
 //#define WITH_ARM_NEON 1
 //#define WITH_SIGNING 1
 #define MODULE_MONITOR 1
+//#define WITH_CARDLIST 1
 
 //#define MODULE_CAMD33 1
 #define MODULE_CAMD35 1
