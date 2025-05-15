@@ -2,12 +2,12 @@
 #include "globals.h"
 #ifdef WITH_CARDLIST
 #include "cardlist.h"
-#include "ncam-aes.h"
-#include "ncam-chk.h"
-#include "ncam-conf-chk.h"
-#include "ncam-conf-mk.h"
-#include "ncam-work.h"
-#include "ncam-string.h"
+#include "oscam-aes.h"
+#include "oscam-chk.h"
+#include "oscam-conf-chk.h"
+#include "oscam-conf-mk.h"
+#include "oscam-work.h"
+#include "oscam-string.h"
 static void info(char *c, char *i) { memcpy(c, i, cs_strlen(i)); }
 static uint8_t card_system(char *atr)
 {
