@@ -2484,6 +2484,11 @@ static char *send_oscam_reader_config(struct templatevars *vars, struct uriparam
 	tpl_addVar(vars, TPLADD, "PASSWORD", xml_encode(vars, rdr->r_pwd));
 	tpl_addVar(vars, TPLADD, "USERNAME", xml_encode(vars, rdr->r_usr));
 	tpl_addVar(vars, TPLADD, "PASS", xml_encode(vars, rdr->r_pwd));
+	
+#ifdef WITH_CARDLIST
+	tpl_printf(vars, TPLADD, "TMP", "CARDLISTSELECTED%d", rdr->cardlist);
+	tpl_addVar(vars, TPLADD, tpl_getVar(vars, "TMP"), "selected");
+#endif
 
 	// Key Newcamd
 	for(i = 0; i < (int32_t)sizeof(rdr->ncd_key); i++)
